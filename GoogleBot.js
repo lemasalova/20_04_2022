@@ -6,6 +6,7 @@
 // @author       Luybov Masalova
 // @match       https://www.google.com/*
 // @match       https://napli.ru/*
+// @match       https://auto.ru/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
 // ==/UserScript==
@@ -16,7 +17,7 @@ let sites = {"napli.ru":["Редакции — это резервные коп�
                          "Отключение редакций и ревизий в WordPress",
                          "Вывод произвольных типов записей и полей в WordPress",],
              "auto.ru":["продажа автомобилей", "каталог автомобилей", "форумы на автору",]};
-let site = Object.keys(sites)[getRandom(0, Object.keys(sites).lenght)];
+let site = Object.keys(sites)[getRandom(0, Object.keys(sites).length)];
 let keywords = sites[site];
 let keyword = keywords[getRandom(0, keywords.length)];
 let btnK = document.getElementsByName("btnK")[0];
@@ -25,6 +26,7 @@ let googleInput = document.getElementsByName("q")[0];
 
 if(btnK !== undefined) {
   document.cookie = "site=" + site;
+
 } else if (location.hostname == "www.google.com") {
   site = getCookie("site");
 } else {
